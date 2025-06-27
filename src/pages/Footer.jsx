@@ -3,42 +3,49 @@ import '../styles/Footer.css';
 
 const Footer = () => {
     const students = [
+
         {
             id: 1,
-            name: 'Ravipati JayaSurya',
-            email: '23a95a1210@aec.edu.in',
-            role: 'Backend Developer'
-        },
-        {
-            id: 2,
-            name: 'Pabolu Sudheer',
-            email: "sudheerpabolu825@gmail.com",
-            role: 'Backend Developer'
-        },
-        {
-            id: 3,
-            name: 'Meena',
-            email: '22A91A4457@aec.edu.in',
-            role: 'Frontend Developer'
-        },
-        {
-            id: 4,
             name: 'Navya',
             email: '22A91A4459@aec.edu.in',
-            role: 'Frontend Developer'
+            role: 'Backend Developer'
         },
+
         {
-            id: 5,
+            id: 2,
+            name: 'Meena',
+            email: '22A91A4457@aec.edu.in',
+            role: 'Backend Developer'
+        },
+
+        {
+            id: 3,
             name: 'Joshna',
             email: '22A91A05H6@aec.edu.in',
             role: 'Frontend Developer'
         },
+
         {
-            id: 6,
-            name: 'Siva Gangadhar',
+            id: 4,
+            name: 'Surya',
+            email: '23a95a1210@aec.edu.in',
+            role: 'Frontend Developer'
+        },
+
+        {
+            id: 5,
+            name: 'Shiva',
             email: 'gsivagangadhar367@gmail.com',
             role: 'Backend Developer'
-        }
+        },
+
+        {
+            id: 6,
+            name: 'Sudheer',
+            email: "sudheerpabolu825@gmail.com",
+            role: 'Frontend Developer'
+        },
+
     ];
 
     return (
@@ -60,7 +67,6 @@ const Footer = () => {
                         </div>
                     ))}
                 </div>
-
                 <div className="social-links">
                     <a href="#" aria-label="Instagram"><FaInstagram /></a>
                     <a href="#" aria-label="Facebook"><FaFacebookF /></a>
