@@ -14,7 +14,7 @@ const FormInput = ({
   error,
   required,
   showPasswordToggle = false,
-  onTogglePassword = () => {},
+  onTogglePassword = () => { },
   isPasswordVisible = false
 }) => (
   <>
@@ -390,6 +390,7 @@ const Login = () => {
           }
         }
       }
+      // In the onSubmitHandler function, update the error handling section:
     } catch (error) {
       setButtonState('error');
       await new Promise(resolve => setTimeout(resolve, 1500));
@@ -405,7 +406,16 @@ const Login = () => {
         } else if (error.response.status === 403) {
           errorMessage = "Access denied. Your account may need verification.";
         } else if (error.response.status === 409) {
+          // This is the conflict status for existing user
           errorMessage = "This email or roll number is already registered.";
+          addToast(
+            {
+              title: "User Already Exists",
+              body: errorMessage,
+            },
+            "error"
+          );
+          return; 
         } else if (error.response.status === 429) {
           errorMessage = "Too many attempts. Please wait before trying again.";
         } else if (error.response.status === 500) {
