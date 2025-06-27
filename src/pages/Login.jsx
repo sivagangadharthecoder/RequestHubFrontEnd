@@ -414,7 +414,7 @@ const Login = () => {
             },
             "error"
           );
-          return; 
+          return;
         } else if (error.response.status === 429) {
           errorMessage = "Too many attempts. Please wait before trying again.";
         } else if (error.response.status === 500) {

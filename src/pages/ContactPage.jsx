@@ -7,15 +7,15 @@ import Navbar from '../components/Navbar';
 
 const ContactPage = () => {
     const { addToast } = useToast();
-    const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle', 'loading', 'success', 'error'
+    const [submitStatus, setSubmitStatus] = useState('idle');
 
     const onSubmit = async (event) => {
         event.preventDefault();
         setSubmitStatus('loading');
-        
+
         try {
             const formData = new FormData(event.target);
-            formData.append("access_key", "43bbf669-6bae-4eb8-b6b0-85c2335e94d1");
+            formData.append("access_key", "652d8eda-cbd6-4e6e-adb3-6042e24b3b76");
 
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
@@ -36,8 +36,7 @@ const ContactPage = () => {
                     'success'
                 );
                 event.target.reset();
-                
-                // Reset button state after 2 seconds
+
                 setTimeout(() => setSubmitStatus('idle'), 2000);
             } else {
                 setSubmitStatus('error');
@@ -45,8 +44,7 @@ const ContactPage = () => {
                     { title: 'Error', body: 'Failed To Send Mail!' },
                     'error'
                 );
-                
-                // Reset button state after 3 seconds
+
                 setTimeout(() => setSubmitStatus('idle'), 3000);
             }
         } catch (error) {
@@ -55,8 +53,7 @@ const ContactPage = () => {
                 { title: 'Error', body: 'Network Error! Please try again.' },
                 'error'
             );
-            
-            // Reset button state after 3 seconds
+
             setTimeout(() => setSubmitStatus('idle'), 3000);
         }
     };
@@ -125,8 +122,8 @@ const ContactPage = () => {
                         <input type="email" placeholder='Enter Your Mail' name='email' required />
                         <label>Write Your Issue</label>
                         <textarea name="message" rows="8" placeholder='Enter Your Message' required></textarea>
-                        <button 
-                            type='submit' 
+                        <button
+                            type='submit'
                             className={`contact-submit ${submitStatus}`}
                             disabled={submitStatus === 'loading'}
                         >
