@@ -11,7 +11,7 @@ const AdminAdding = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [department, setDepartment] = useState('CSE'); // Default to CSE
+    const [department, setDepartment] = useState('IT');
     const [errors, setErrors] = useState({
         password: ''
     });
