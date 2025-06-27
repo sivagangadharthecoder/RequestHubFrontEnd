@@ -390,7 +390,6 @@ const Login = () => {
           }
         }
       }
-      // In the onSubmitHandler function, update the error handling section:
     } catch (error) {
       setButtonState('error');
       await new Promise(resolve => setTimeout(resolve, 1500));
