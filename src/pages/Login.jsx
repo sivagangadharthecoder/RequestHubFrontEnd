@@ -188,7 +188,6 @@ const Login = () => {
       e.preventDefault();
       setButtonState('loading');
 
-      // Validate all fields
       const isNameValid = state === "Sign Up" ? validateName(name) : true;
       const isEmailValid = validateEmail(email);
       const isRollNumberValid = validateRollNumber(rollNumber);
@@ -293,7 +292,7 @@ const Login = () => {
           flex-direction: column;
           align-items: center;
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-          padding: 20px;
+          padding: 16px;
           box-sizing: border-box;
           position: relative;
           overflow: hidden;
@@ -311,68 +310,38 @@ const Login = () => {
           z-index: 0;
         }
         
-        .auth-page::after {
-          content: '';
-          position: absolute;
-          bottom: -50%;
-          right: -50%;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-          animation: float 20s infinite linear reverse;
-          z-index: 0;
-        }
-        
-        @keyframes float {
-          0% { transform: translate(0, 0) rotate(0deg); }
-          25% { transform: translate(-5%, 5%) rotate(5deg); }
-          50% { transform: translate(-10%, 0) rotate(0deg); }
-          75% { transform: translate(-5%, -5%) rotate(-5deg); }
-          100% { transform: translate(0, 0) rotate(0deg); }
-        }
-        
         .auth-header {
-          padding: 20px;
-          font-size: 28px;
+          padding: 16px;
+          font-size: 1.5rem;
           font-weight: 700;
           color: #2d3748;
           cursor: pointer;
           text-align: center;
           z-index: 10;
           position: relative;
-          margin-bottom: 20px;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.05);
-          transition: all 0.3s ease;
-        }
-        
-        .auth-header:hover {
-          transform: translateY(-2px);
-          text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          margin-bottom: 12px;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+          transition: all 0.2s ease;
         }
         
         .auth-container {
-          max-width: 440px;
+          max-width: 400px;
           width: 100%;
           background: white;
-          border-radius: 16px;
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+          border-radius: 12px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
           overflow: hidden;
           border: 1px solid rgba(255, 255, 255, 0.3);
-          margin-top: 20px;
+          margin-top: 16px;
           position: relative;
           z-index: 10;
-          transition: all 0.3s ease;
-          backdrop-filter: blur(10px);
-          background: rgba(255, 255, 255, 0.9);
-        }
-        
-        .auth-container:hover {
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
-          transform: translateY(-2px);
+          transition: all 0.2s ease;
+          backdrop-filter: blur(8px);
+          background: rgba(255, 255, 255, 0.95);
         }
         
         .auth-header-section {
-          padding: 28px;
+          padding: 20px;
           border-bottom: 1px solid rgba(0, 0, 0, 0.05);
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
@@ -381,23 +350,25 @@ const Login = () => {
         
         .auth-header-section h2 {
           margin: 0;
-          font-size: 22px;
+          font-size: 1.25rem;
           font-weight: 600;
-          letter-spacing: 0.5px;
+          letter-spacing: 0.3px;
+          color: white;
         }
         
         .auth-header-section p {
-          margin: 8px 0 0;
-          font-size: 14px;
+          margin: 6px 0 0;
+          font-size: 0.8rem;
           opacity: 0.9;
+          color: rgba(255,255,255,0.9);
         }
         
         .auth-form {
-          padding: 28px;
+          padding: 20px;
         }
         
         .form-input-group {
-          margin-bottom: 20px;
+          margin-bottom: 16px;
         }
         
         .input-container {
@@ -407,67 +378,47 @@ const Login = () => {
         
         .input-icon {
           position: absolute;
-          left: 16px;
+          left: 14px;
           top: 50%;
           transform: translateY(-50%);
-          font-size: 16px;
+          font-size: 14px;
           color: #a0aec0;
-          transition: all 0.3s ease;
-        }
-        
-        .input-icon.icon-animate {
-          opacity: 0;
-          transform: translateY(-50%) scale(0.8);
+          transition: all 0.2s ease;
         }
         
         .auth-form input {
           width: 100%;
-          padding: 14px 20px;
-          padding-left: 48px;
+          padding: 12px 16px;
+          padding-left: 40px;
           border: 1px solid #e2e8f0;
           border-radius: 8px;
-          font-size: 15px;
+          font-size: 0.9rem;
           color: #2d3748;
-          transition: all 0.3s ease;
+          transition: all 0.2s ease;
           box-sizing: border-box;
           background-color: #f8fafc;
-          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
         }
         
         .auth-form input:focus {
           outline: none;
           border-color: #667eea;
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+          box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
           background-color: white;
-        }
-        
-        .auth-form input.placeholder-animate::placeholder {
-          opacity: 0;
-        }
-        
-        .auth-form input::placeholder {
-          color: #a0aec0;
-          transition: opacity 0.3s ease;
         }
         
         .password-toggle {
           position: absolute;
-          right: 16px;
+          right: 14px;
           top: 50%;
           transform: translateY(-50%);
-          font-size: 16px;
+          font-size: 14px;
           color: #a0aec0;
           cursor: pointer;
-          transition: color 0.2s ease;
-        }
-        
-        .password-toggle:hover {
-          color: #667eea;
         }
         
         .input-error {
           color: #e53e3e;
-          font-size: 13px;
+          font-size: 0.75rem;
           margin: 4px 0 0;
           text-align: right;
         }
@@ -476,82 +427,43 @@ const Login = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin: 20px 0;
+          margin: 16px 0;
         }
         
         .forgot-password {
-          font-size: 14px;
+          font-size: 0.8rem;
           color: #718096;
           cursor: pointer;
-          text-decoration: none;
-          transition: all 0.2s ease;
-        }
-        
-        .forgot-password:hover {
-          color: #667eea;
-          text-decoration: underline;
         }
         
         .submit-button {
           width: 100%;
-          padding: 16px;
+          padding: 14px;
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
           border: none;
           border-radius: 8px;
-          font-size: 15px;
+          font-size: 0.9rem;
           font-weight: 500;
           cursor: pointer;
-          transition: all 0.3s ease;
+          transition: all 0.2s ease;
           margin-top: 8px;
-          position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 8px;
-          overflow: hidden;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          z-index: 1;
-        }
-        
-        .submit-button::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          z-index: -1;
-        }
-        
-        .submit-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .submit-button:hover::before {
-          opacity: 1;
-        }
-        
-        .submit-button:active {
-          transform: translateY(0);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .submit-button:disabled {
           cursor: not-allowed;
           opacity: 0.8;
-          transform: none !important;
         }
         
         .auth-switch {
-          padding: 20px;
+          padding: 16px;
           border-top: 1px solid rgba(0, 0, 0, 0.05);
           text-align: center;
-          font-size: 14px;
+          font-size: 0.8rem;
           color: #718096;
         }
         
@@ -559,12 +471,6 @@ const Login = () => {
           color: #667eea;
           font-weight: 500;
           cursor: pointer;
-          text-decoration: none;
-          transition: all 0.2s ease;
-        }
-        
-        .auth-switch span:hover {
-          text-decoration: underline;
         }
         
         .spin {
@@ -576,43 +482,38 @@ const Login = () => {
           100% { transform: rotate(360deg); }
         }
         
-        .status-success {
-          animation: checkBounce 0.6s ease;
-        }
-        
-        @keyframes checkBounce {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.2); }
-        }
-        
-        .status-error {
-          animation: errorShake 0.6s ease;
-        }
-        
-        @keyframes errorShake {
-          0%, 100% { transform: translateX(0); }
-          20%, 60% { transform: translateX(-5px); }
-          40%, 80% { transform: translateX(5px); }
+        @keyframes float {
+          0% { transform: translate(0, 0) rotate(0deg); }
+          25% { transform: translate(-5%, 5%) rotate(5deg); }
+          50% { transform: translate(-10%, 0) rotate(0deg); }
+          75% { transform: translate(-5%, -5%) rotate(-5deg); }
+          100% { transform: translate(0, 0) rotate(0deg); }
         }
         
         @media (max-width: 480px) {
           .auth-container {
             max-width: 100%;
-            margin-top: 10px;
+            margin-top: 12px;
           }
           
           .auth-header {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
           }
           
           .auth-header-section, .auth-form {
-            padding: 20px;
+            padding: 16px;
           }
           
           .auth-form input {
-            padding: 12px 16px;
-            padding-left: 44px;
+            padding: 10px 14px;
+            padding-left: 38px;
+            font-size: 0.85rem;
+          }
+          
+          .submit-button {
+            padding: 12px;
+            font-size: 0.85rem;
           }
         }
       `}</style>
@@ -704,12 +605,12 @@ const Login = () => {
               </>
             ) : buttonState === 'success' ? (
               <>
-                <FaCheck className="status-success" />
+                <FaCheck />
                 Success!
               </>
             ) : buttonState === 'error' ? (
               <>
-                <FaTimes className="status-error" />
+                <FaTimes />
                 Try Again
               </>
             ) : (
