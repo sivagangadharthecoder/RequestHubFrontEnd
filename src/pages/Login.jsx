@@ -100,6 +100,7 @@ const Login = () => {
   const [errors, setErrors] = useState({
     name: "",
     rollNumber: "",
+    email: "",
     password: "",
     confirmPassword: "",
   });
@@ -108,105 +109,88 @@ const Login = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const validateName = (value) => {
-    if (value.length > 14) {
-      setErrors((prev) => ({
-        ...prev,
-        name: "Name must be 14 characters or less",
-      }));
+    if (!value.trim()) {
+      setErrors(prev => ({ ...prev, name: "Name is required" }));
       return false;
     }
-    setErrors((prev) => ({ ...prev, name: "" }));
+    if (value.length > 14) {
+      setErrors(prev => ({ ...prev, name: "Max 14 characters" }));
+      return false;
+    }
+    setErrors(prev => ({ ...prev, name: "" }));
     return true;
   };
 
   const validateEmail = (value) => {
+    if (!value.trim()) {
+      setErrors(prev => ({ ...prev, email: "Email is required" }));
+      return false;
+    }
     const allowedDomains = ["acet.ac.in", "aec.edu.in", "acoe.edu.in"];
     const domain = value.split("@")[1];
-
     if (!domain || !allowedDomains.includes(domain)) {
-      setErrors((prev) => ({ ...prev, email: "Invalid college email" }));
+      setErrors(prev => ({ ...prev, email: "Use college email only" }));
       return false;
     }
-
-    return true;
-  };
-
-  const validateConfirmPassword = (value) => {
-    if (value !== password) {
-      setErrors((prev) => ({
-        ...prev,
-        confirmPassword: "Passwords do not match",
-      }));
-      return false;
-    }
-
-    setErrors((prev) => ({
-      ...prev,
-      confirmPassword: "",
-    }));
+    setErrors(prev => ({ ...prev, email: "" }));
     return true;
   };
 
   const validateRollNumber = (value) => {
-    if (value.length > 10) {
-      setErrors((prev) => ({
-        ...prev,
-        rollNumber: "Roll number must be 10 characters or less",
-      }));
+    if (!value.trim()) {
+      setErrors(prev => ({ ...prev, rollNumber: "Roll number is required" }));
       return false;
     }
-    setErrors((prev) => ({ ...prev, rollNumber: "" }));
+    if (value.length > 10) {
+      setErrors(prev => ({ ...prev, rollNumber: "Max 10 characters" }));
+      return false;
+    }
+    setErrors(prev => ({ ...prev, rollNumber: "" }));
     return true;
   };
 
   const validatePassword = (value) => {
-    const minLength = 8;
-    const hasUpperCase = /[A-Z]/.test(value);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
-    const hasNumber = /\d/.test(value);
-
-    if (value.length < minLength) {
-      setErrors((prev) => ({
-        ...prev,
-        password: "Password must be at least 8 characters long",
-      }));
+    if (!value.trim()) {
+      setErrors(prev => ({ ...prev, password: "Password is required" }));
       return false;
     }
-
-    if (!hasUpperCase) {
-      setErrors((prev) => ({
-        ...prev,
-        password: "Password must contain at least one uppercase letter",
-      }));
+    if (value.length < 8) {
+      setErrors(prev => ({ ...prev, password: "Min 8 characters" }));
       return false;
     }
-
-    if (!hasSpecialChar) {
-      setErrors((prev) => ({
-        ...prev,
-        password: "Password must contain at least one special character",
-      }));
+    if (!/[A-Z]/.test(value)) {
+      setErrors(prev => ({ ...prev, password: "Needs uppercase letter" }));
       return false;
     }
-
-    if (!hasNumber) {
-      setErrors((prev) => ({
-        ...prev,
-        password: "Password must contain at least one number",
-      }));
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
+      setErrors(prev => ({ ...prev, password: "Needs special character" }));
       return false;
     }
+    if (!/\d/.test(value)) {
+      setErrors(prev => ({ ...prev, password: "Needs a number" }));
+      return false;
+    }
+    setErrors(prev => ({ ...prev, password: "" }));
+    return true;
+  };
 
-    setErrors((prev) => ({ ...prev, password: "" }));
+  const validateConfirmPassword = (value) => {
+    if (!value.trim()) {
+      setErrors(prev => ({ ...prev, confirmPassword: "Confirm password" }));
+      return false;
+    }
+    if (value !== password) {
+      setErrors(prev => ({ ...prev, confirmPassword: "Passwords don't match" }));
+      return false;
+    }
+    setErrors(prev => ({ ...prev, confirmPassword: "" }));
     return true;
   };
 
   const handleNameChange = (e) => {
     const value = e.target.value;
-    if (value.length <= 14) {
-      setName(value);
-      validateName(value);
-    }
+    setName(value);
+    validateName(value);
   };
 
   const handleEmailChange = (e) => {
@@ -217,16 +201,15 @@ const Login = () => {
 
   const handleRollNumberChange = (e) => {
     const value = e.target.value.toUpperCase();
-    if (value.length <= 10) {
-      setRollNumber(value);
-      validateRollNumber(value);
-    }
+    setRollNumber(value);
+    validateRollNumber(value);
   };
 
   const handlePasswordChange = (e) => {
     const value = e.target.value;
     setPassword(value);
     validatePassword(value);
+    if (confirmPassword) validateConfirmPassword(confirmPassword);
   };
 
   const handleConfirmPasswordChange = (e) => {
@@ -248,25 +231,17 @@ const Login = () => {
       e.preventDefault();
       setButtonState('loading');
 
+      // Validate all fields
       const isNameValid = state === "Sign Up" ? validateName(name) : true;
       const isEmailValid = validateEmail(email);
       const isRollNumberValid = validateRollNumber(rollNumber);
       const isPasswordValid = validatePassword(password);
-      const isConfirmPasswordValid =
-        state === "Sign Up" ? validateConfirmPassword(confirmPassword) : true;
+      const isConfirmPasswordValid = state === "Sign Up" ? validateConfirmPassword(confirmPassword) : true;
 
-      if (
-        !isNameValid ||
-        !isRollNumberValid ||
-        !isPasswordValid ||
-        !isConfirmPasswordValid ||
-        !isEmailValid
-      ) {
+      if (!isNameValid || !isEmailValid || !isRollNumberValid || 
+          !isPasswordValid || !isConfirmPasswordValid) {
         addToast(
-          {
-            title: "Form Validation Failed",
-            body: "Please enter the details correct format.",
-          },
+          { title: "Invalid Input", body: "Please check all fields" },
           "error"
         );
         setButtonState('error');
@@ -291,36 +266,10 @@ const Login = () => {
           setIsLoggedin(true);
 
           addToast(
-            {
-              title: "Account Creation Success!",
-              body: "Welcome To RequestHub!",
-            },
+            { title: "Success", body: "Registration successful!" },
             "success"
           );
-
-          addToast(
-            {
-              title: "Email Verification Required",
-              body: "Verify Your Mail To Access Dashboard",
-            },
-            "info"
-          );
-
           navigate("/");
-        } else {
-          setButtonState('error');
-          await new Promise(resolve => setTimeout(resolve, 1500));
-          setButtonState('default');
-
-          addToast(
-            {
-              title: "Registration Failed",
-              body:
-                response.data.message ||
-                "Unable To Create Account. Please Try Again.",
-            },
-            "error"
-          );
         }
       } else {
         const response = await axios.post(`${backendUrl}/api/auth/login`, {
@@ -336,58 +285,10 @@ const Login = () => {
           setIsLoggedin(true);
 
           addToast(
-            {
-              title: "Login Successful",
-              body: `Welcome back, ${response.data.user?.name || ""}!`,
-            },
+            { title: "Welcome Back", body: "Login successful" },
             "success"
           );
-
           navigate("/");
-        } else {
-          setButtonState('error');
-          await new Promise(resolve => setTimeout(resolve, 1500));
-          setButtonState('default');
-
-          if (response.data.message?.toLowerCase().includes("not verified")) {
-            addToast(
-              {
-                title: "Account Not Verified",
-                body: "Please verify your email",
-              },
-              "error"
-            );
-          } else if (
-            response.data.message?.toLowerCase().includes("invalid credentials")
-          ) {
-            addToast(
-              {
-                title: "Invalid Credentials",
-                body: "The roll number, email or password you entered is incorrect.",
-              },
-              "error"
-            );
-          } else if (
-            response.data.message?.toLowerCase().includes("suspended")
-          ) {
-            addToast(
-              {
-                title: "Account Suspended",
-                body: "Your account has been suspended. Please contact support.",
-              },
-              "error"
-            );
-          } else {
-            addToast(
-              {
-                title: "Login Failed",
-                body:
-                  response.data.message ||
-                  "An error occurred during login. Please try again.",
-              },
-              "error"
-            );
-          }
         }
       }
     } catch (error) {
@@ -395,42 +296,31 @@ const Login = () => {
       await new Promise(resolve => setTimeout(resolve, 1500));
       setButtonState('default');
 
-      let errorMessage = "An unexpected error occurred. Please try again.";
+      let errorMessage = "An error occurred. Please try again.";
 
       if (error.response) {
-        if (error.response.status === 400) {
-          errorMessage = "Invalid request data. Please check your inputs.";
-        } else if (error.response.status === 401) {
-          errorMessage = "Authentication failed. Please check your credentials.";
-        } else if (error.response.status === 403) {
-          errorMessage = "Access denied. Your account may need verification.";
-        } else if (error.response.status === 409) {
-          // This is the conflict status for existing user
-          errorMessage = "This email or roll number is already registered.";
-          addToast(
-            {
-              title: "User Already Exists",
-              body: errorMessage,
-            },
-            "error"
-          );
-          return;
-        } else if (error.response.status === 429) {
-          errorMessage = "Too many attempts. Please wait before trying again.";
-        } else if (error.response.status === 500) {
-          errorMessage = "Server error. Please try again later.";
-        } else if (error.response.data?.message) {
-          errorMessage = error.response.data.message;
+        switch (error.response.data.message) {
+          case "User already exists":
+            errorMessage = "Account already exists with this email/roll number";
+            break;
+          case "Enter college mail only":
+            errorMessage = "Please use your college email (@acet.ac.in, etc.)";
+            break;
+          case "Invalid credentials":
+            errorMessage = "Invalid roll number, email or password";
+            break;
+          case "Please fill all fields":
+            errorMessage = "All fields are required";
+            break;
+          default:
+            errorMessage = error.response.data.message || errorMessage;
         }
       } else if (error.message === "Network Error") {
-        errorMessage = "Network connection failed. Please check your internet.";
+        errorMessage = "Network error. Please check your connection.";
       }
 
       addToast(
-        {
-          title: "Error",
-          body: errorMessage,
-        },
+        { title: "Error", body: errorMessage },
         "error"
       );
     }
@@ -552,8 +442,7 @@ const Login = () => {
           width: "100%",
           background: "white",
           borderRadius: "12px",
-          boxShadow:
-            "0 30px 80px rgba(0, 0, 0, 0.3), 0 15px 30px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.5)",
+          boxShadow: "0 30px 80px rgba(0, 0, 0, 0.3), 0 15px 30px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.5)",
           overflow: "hidden",
           border: "1px solid #e0e0e0",
           marginTop: "30px",
@@ -561,28 +450,15 @@ const Login = () => {
           transition: "transform 0.3s ease",
           zIndex: 10,
         }}
-        onMouseEnter={(e) =>
-          (e.currentTarget.style.transform = "rotateY(0deg) rotateX(0deg)")
-        }
-        onMouseLeave={(e) =>
-          (e.currentTarget.style.transform = "rotateY(5deg) rotateX(5deg)")
-        }
+        onMouseEnter={(e) => (e.currentTarget.style.transform = "rotateY(0deg) rotateX(0deg)")}
+        onMouseLeave={(e) => (e.currentTarget.style.transform = "rotateY(5deg) rotateX(5deg)")}
       >
         <div style={{ padding: "24px", borderBottom: "1px solid #eee" }}>
-          <h2
-            style={{
-              margin: "0",
-              fontSize: "20px",
-              color: "#222",
-              fontWeight: "600",
-            }}
-          >
+          <h2 style={{ margin: "0", fontSize: "20px", color: "#222", fontWeight: "600" }}>
             {state === "Sign Up" ? "Create Account" : "Welcome Back"}
           </h2>
           <p style={{ margin: "8px 0 0", fontSize: "14px", color: "#666" }}>
-            {state === "Sign Up"
-              ? "Get started with your account"
-              : "Log in to continue"}
+            {state === "Sign Up" ? "Get started with your account" : "Log in to continue"}
           </p>
         </div>
 
@@ -592,7 +468,7 @@ const Login = () => {
               icon={<FaUser />}
               value={name}
               onChange={handleNameChange}
-              placeholder="Full Name - At Most 14"
+              placeholder="Full Name"
               error={errors.name}
               required
             />
@@ -601,7 +477,7 @@ const Login = () => {
             icon={<FaIdCard />}
             value={rollNumber}
             onChange={handleRollNumberChange}
-            placeholder="Roll.No - Capitals Only"
+            placeholder="Roll Number"
             error={errors.rollNumber}
             required
           />
@@ -609,15 +485,16 @@ const Login = () => {
             icon={<FaEnvelope />}
             value={email}
             onChange={handleEmailChange}
-            placeholder="College Mail"
+            placeholder="College Email"
             type="email"
+            error={errors.email}
             required
           />
           <FormInput
             icon={<FaLock />}
             value={password}
             onChange={handlePasswordChange}
-            placeholder={state === "Sign Up" ? "Set Password" : "Password"}
+            placeholder={state === "Sign Up" ? "Create Password" : "Password"}
             type={showPassword ? "text" : "password"}
             error={errors.password}
             required
@@ -639,20 +516,9 @@ const Login = () => {
               isPasswordVisible={showConfirmPassword}
             />
           )}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              marginBottom: "20px",
-            }}
-          >
+          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "20px" }}>
             <span
-              style={{
-                fontSize: "13px",
-                color: "#555",
-                cursor: "pointer",
-                textDecoration: "underline",
-              }}
+              style={{ fontSize: "13px", color: "#555", cursor: "pointer", textDecoration: "underline" }}
               onClick={() => navigate("/reset-password")}
             >
               Forgot Password?
@@ -719,12 +585,7 @@ const Login = () => {
             <p>
               Already Have An Account?{" "}
               <span
-                style={{
-                  color: "#213448",
-                  fontWeight: "500",
-                  cursor: "pointer",
-                  textDecoration: "underline",
-                }}
+                style={{ color: "#213448", fontWeight: "500", cursor: "pointer", textDecoration: "underline" }}
                 onClick={() => setState("Login")}
               >
                 Log In
@@ -734,12 +595,7 @@ const Login = () => {
             <p>
               Don't Have An Account?{" "}
               <span
-                style={{
-                  color: "#213448",
-                  fontWeight: "500",
-                  cursor: "pointer",
-                  textDecoration: "underline",
-                }}
+                style={{ color: "#213448", fontWeight: "500", cursor: "pointer", textDecoration: "underline" }}
                 onClick={() => setState("Sign Up")}
               >
                 Sign up
