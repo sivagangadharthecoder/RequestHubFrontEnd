@@ -1,0 +1,399 @@
+.zara-admin-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #eaf0f5;
+    color: #213448;
+}
+
+.zara-admin-sidebar {
+    width: 280px;
+    background-color: #213448;
+    color: white;
+    border-right: 1px solid #1b2e3e;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    position: relative;
+}
+
+.zara-admin-brand {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #2f4b60;
+    margin-bottom: 20px;
+}
+
+.zara-admin-brand h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+
+.zara-admin-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px;
+}
+
+.zara-nav-section {
+    margin-bottom: 25px;
+}
+
+.zara-nav-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8ca8c2;
+    margin: 0 0 15px 0;
+    font-weight: 500;
+}
+
+.zara-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.zara-nav-link {
+    display: block;
+    padding: 12px 10px;
+    color: #cde3f4;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.zara-nav-link:hover {
+    background-color: #547792;
+    color: white;
+    font-weight: 500;
+}
+
+
+.zara-status-group {
+    margin-bottom: 15px;
+}
+
+.zara-status-title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+    color: #8ca8c2;
+}
+
+.zara-status-list {
+    list-style: none;
+    padding: 0 0 0 15px;
+    margin: 0;
+}
+
+.zara-status-link {
+    display: block;
+    padding: 8px 10px;
+    color: #b6cadd;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.zara-status-link:hover {
+    background-color: #547792;
+    color: white;
+}
+
+
+.zara-logout-btn {
+    background-color: #547792;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.zara-logout-btn:hover {
+    background-color: #39566b;
+}
+
+.zara-admin-content {
+    flex: 1;
+    padding: 30px;
+    background-color: #f6f9fc;
+    overflow-y: auto;
+}
+
+@media (max-width: 992px) {
+    .zara-admin-sidebar {
+        width: 240px;
+    }
+
+    .zara-admin-content {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .zara-admin-container {
+        flex-direction: column;
+    }
+
+    .zara-admin-sidebar {
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    .zara-admin-content {
+        padding: 20px;
+    }
+
+    .zara-logout-btn {
+        margin: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .zara-admin-sidebar {
+        padding: 10px 0;
+    }
+
+    .zara-admin-brand h1 {
+        font-size: 1.3rem;
+    }
+
+    .zara-nav-title {
+        font-size: 0.8rem;
+    }
+
+    .zara-nav-link {
+        font-size: 0.85rem;
+        padding: 10px 0;
+    }
+
+    .zara-status-link {
+        font-size: 0.8rem;
+    }
+
+    .zara-admin-content {
+        padding: 15px;
+    }
+}
+
+.zara-nav-title,
+.zara-status-title {
+    cursor: pointer;
+    user-select: none;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #2e4d66;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.zara-nav-title:hover,
+.zara-status-title:hover {
+    background-color: #547792;
+}
+
+.zara-nav-list,
+.zara-status-list {
+    list-style: none;
+    padding-left: 20px;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+.zara-nav-link,
+.zara-status-link {
+    display: block;
+    padding: 8px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+:root {
+    --main-heading: #84ADEA;
+    --sub-heading: #CBDCF7;
+    --sidebar-bg: #1A2C3D;
+    --sidebar-text: #E0E9F5;
+    --sidebar-hover: #3A5A7A;
+    --content-bg: #F5F8FC;
+}
+
+.zara-admin-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--content-bg);
+}
+
+.zara-admin-sidebar {
+    width: 100%;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 8px 0;
+    order: 2;
+}
+
+.zara-admin-brand h1 {
+    font-size: 1.2rem;
+    padding: 0 12px 12px;
+    margin: 0;
+    color: var(--main-heading);
+    border-bottom: 1px solid #2F4B60;
+}
+
+.zara-admin-nav {
+    padding: 0 12px;
+}
+
+.zara-nav-section {
+    margin-bottom: 16px;
+}
+
+.zara-nav-title,
+.zara-status-title {
+    font-size: 0.75rem;
+    padding: 8px;
+    margin: 4px 0;
+    background: #2A3E52;
+    color: var(--sub-heading);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.zara-nav-list,
+.zara-status-list {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0 8px;
+}
+
+.zara-nav-link,
+.zara-status-link {
+    display: block;
+    padding: 6px 8px;
+    font-size: 0.7rem;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    border-radius: 3px;
+    margin: 2px 0;
+}
+
+.zara-nav-link:hover,
+.zara-status-link:hover {
+    background: var(--sidebar-hover);
+}
+
+.zara-logout-btn {
+    display: block;
+    width: calc(100% - 24px);
+    margin: 8px 12px;
+    padding: 6px;
+    font-size: 0.7rem;
+    background: #3A5A7A;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.zara-admin-content {
+    flex: 1;
+    padding: 12px;
+    order: 1;
+    background: var(--content-bg);
+}
+
+@media (min-width: 768px) {
+    .zara-admin-container {
+        flex-direction: row;
+    }
+
+    .zara-admin-sidebar {
+        width: 200px;
+        order: 1;
+        padding: 12px 0;
+    }
+
+    .zara-admin-content {
+        padding: 16px;
+        order: 2;
+    }
+
+    .zara-nav-title,
+    .zara-status-title {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+    }
+
+    .zara-nav-link,
+    .zara-status-link {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .zara-admin-sidebar {
+        width: 220px;
+        padding: 16px 0;
+    }
+
+    .zara-admin-brand h1 {
+        font-size: 1.3rem;
+        padding: 0 16px 16px;
+    }
+
+    .zara-admin-nav {
+        padding: 0 16px;
+    }
+
+    .zara-nav-title,
+    .zara-status-title {
+        font-size: 0.85rem;
+    }
+
+    .zara-nav-link,
+    .zara-status-link {
+        font-size: 0.8rem;
+    }
+
+    .zara-logout-btn {
+        font-size: 0.8rem;
+        padding: 8px;
+        margin: 12px 16px;
+    }
+}
+
+.zara-nav-link.active,
+.zara-status-link.active {
+    background: var(--main-heading);
+    color: var(--sidebar-bg);
+    font-weight: 500;
+}
+
+.zara-nav-title::after,
+.zara-status-title::after {
+    content: '▶';
+    font-size: 0.6rem;
+    transition: transform 0.2s;
+}
+
+.zara-nav-title[aria-expanded="true"]::after,
+.zara-status-title[aria-expanded="true"]::after {
+    content: '▼';
+}

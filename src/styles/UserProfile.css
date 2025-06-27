@@ -1,0 +1,522 @@
+.profile-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  transition: all 0.3s ease;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.profile-avatar {
+  border: 4px solid #10b981;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.1);
+  border-color: #34d399;
+}
+
+.profile-title-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-title {
+  color: #111827;
+  font-weight: 600;
+  font-size: 1.875rem;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.profile-edit-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-edit-input {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  background: #f9fafb;
+  color: #111827;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.profile-edit-input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.profile-edit-button {
+  color: #10b981;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.profile-edit-button:hover {
+  color: #34d399;
+  transform: scale(1.2);
+}
+
+.change-username-button {
+  background: #10b981;
+  color: #ffffff;
+  padding: 8px 24px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.change-username-button:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+.profile-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.profile-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.profile-detail-item:hover {
+  background: #e5e7eb;
+  transform: translateX(4px);
+}
+
+.profile-detail-icon {
+  color: #10b981;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.profile-detail-item:hover .profile-detail-icon {
+  color: #34d399;
+}
+
+.profile-detail-label {
+  color: #374151;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.profile-detail-value {
+  color: #6b7280;
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-detail-value2 {
+  word-break: break-all;
+}
+
+.profile-loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.profile-empty-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.profile-empty-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  text-align: center;
+}
+
+.request-counts-container {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+}
+
+.request-counts-title {
+  color: #111827;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+.request-counts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.count-card {
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.count-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.count-card.pending {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid #f59e0b;
+}
+
+.count-card.accepted {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid #10b981;
+}
+
+.count-card.rejected {
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid #dc2626;
+}
+
+.count-card.total {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid #3b82f6;
+}
+
+.count-value {
+  color: #111827;
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+
+@media (min-width: 640px) {
+  .profile-wrapper {
+    padding: 48px;
+  }
+
+  .profile-card {
+    padding: 40px;
+  }
+
+  .profile-header {
+    align-items: flex-start;
+  }
+
+  .profile-title-container {
+    align-items: flex-start;
+  }
+
+  .request-counts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .request-counts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.profile-wrapper {
+  min-height: 100vh;
+  background: #f5f5f5; 
+  padding: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+}
+
+.profile-container {
+  width: 100%;
+  gap: 8px;
+}
+
+.profile-card, .request-counts-container {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.profile-header {
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.profile-avatar {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #10b981;
+}
+
+.profile-title {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.profile-edit-container {
+  width: 100%;
+  gap: 4px;
+}
+
+.profile-edit-input {
+  padding: 4px 8px;
+  font-size: 0.9rem;
+}
+
+.profile-edit-button {
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.change-username-button {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.profile-details {
+  gap: 6px;
+}
+
+.profile-detail-item {
+  padding: 6px;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.profile-detail-icon {
+  font-size: 16px;
+}
+
+/* Micro request counts */
+.request-counts-title {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.request-counts {
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.count-card {
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.count-card > .ant-typography {
+  margin-bottom: 0;
+}
+
+.count-value {
+  font-size: 1.2rem;
+}
+
+.profile-loading-container, 
+.profile-empty-container {
+  min-height: 40vh;
+  padding: 16px;
+}
+
+@media (min-width: 400px) {
+  .profile-wrapper {
+    padding: 12px;
+  }
+  
+  .request-counts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 640px) {
+  .profile-card, 
+  .request-counts-container {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .profile-header {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .profile-title {
+    text-align: left;
+    font-size: 1.3rem;
+  }
+
+  .change-username-button {
+    width: auto;
+    padding: 6px 12px;
+  }
+
+  .request-counts {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+}
+
+@media (min-width: 768px) {
+  .profile-wrapper {
+    padding: 16px;
+  }
+
+  .profile-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .profile-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 475px) {
+  .profile-wrapper {
+    padding: 6px;
+  }
+
+  .profile-card, 
+  .request-counts-container {
+    padding: 8px;
+    border-radius: 6px;
+  }
+
+  .profile-header {
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-width: 1px;
+  }
+
+  .profile-title {
+    font-size: 1rem;
+  }
+
+  .profile-detail-item,
+  .profile-detail-label,
+  .profile-detail-value {
+    font-size: 0.75rem !important;
+  }
+
+  .profile-detail-icon {
+    font-size: 14px;
+  }
+
+  .profile-edit-input {
+    padding: 3px 6px;
+    font-size: 0.8rem;
+  }
+
+  .change-username-button {
+    padding: 3px 6px;
+    font-size: 0.7rem;
+  }
+
+  .request-counts-title {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .request-counts {
+    grid-template-columns: 1fr 1fr; 
+    gap: 4px;
+  }
+
+  .count-card {
+    padding: 6px;
+    min-height: 0;
+  }
+
+  .count-card .ant-typography {
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .count-card > .ant-typography:first-child {
+    font-size: 0.7rem !important;
+  }
+
+  .count-value {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (min-width: 476px) and (max-width: 639px) {
+  .request-counts {
+    grid-template-columns: 1fr 1fr; 
+    gap: 6px;
+  }
+  .count-value {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .request-counts {
+    grid-template-columns: 1fr 1fr; 
+  }
+}
+
+@media (min-width: 1024px) {
+  .request-counts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

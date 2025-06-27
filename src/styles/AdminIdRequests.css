@@ -1,0 +1,538 @@
+.zara-admin-page {
+  padding: 30px;
+  background-color: #fff;
+  color: #333;
+}
+
+.zara-page-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 20px;
+}
+
+.zara-page-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  color: #000;
+}
+
+.zara-page-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.zara-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.zara-search-input {
+  padding: 8px 12px 8px 35px;
+  border: 1px solid #e5e5e5;
+  font-size: 0.9rem;
+  min-width: 200px;
+  transition: all 0.2s ease;
+}
+
+.zara-search-input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.zara-search-icon {
+  position: absolute;
+  left: 10px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.zara-rows-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.zara-rows-text {
+  font-size: 0.9rem;
+  color: black;
+}
+
+.zara-select {
+  padding: 8px;
+  border: 1px solid #e5e5e5;
+  font-size: 0.9rem;
+  background-color: #fff;
+  cursor: pointer;
+  color: black;
+}
+
+.zara-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  border: 1px solid #e5e5e5;
+}
+
+.zara-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.zara-table th {
+  padding: 12px 15px;
+  text-align: left;
+  background-color: #f8f8f8;
+  font-weight: 500;
+  color: #666;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.zara-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.zara-table tr:last-child td {
+  border-bottom: none;
+}
+
+.zara-table tr:hover {
+  background-color: #fafafa;
+}
+
+.zara-reason-cell {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zara-status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.zara-status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.zara-status.approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.zara-status.rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.zara-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.zara-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 2px;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.zara-btn:hover {
+  opacity: 0.8;
+}
+
+.zara-approve {
+  color: white;
+}
+
+.zara-reject {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.zara-download {
+  background-color: transparent;
+  border: 1px solid #000;
+  color: #000;
+}
+
+.zara-delete {
+  background-color: transparent;
+  color: #d9534f;
+  border: 1px solid #d9534f;
+}
+
+.zara-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.zara-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  gap: 15px;
+}
+
+.zara-pagination-info {
+  color: #666;
+}
+
+.zara-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.zara-pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.zara-pagination-btn:hover:not(:disabled) {
+  background-color: #000;
+  color: white;
+  border-color: #000;
+}
+
+.zara-pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.zara-page-info {
+  color: #666;
+}
+
+.zara-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 12px;
+  color: #666;
+}
+
+.zara-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e5e5e5;
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: zara-spin 1s linear infinite;
+}
+
+@keyframes zara-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .zara-admin-page {
+    padding: 20px;
+  }
+
+  .zara-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .zara-page-controls {
+    width: 100%;
+  }
+
+  .zara-search-box {
+    width: 100%;
+  }
+
+  .zara-search-input {
+    width: 100%;
+  }
+
+  .zara-pagination {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .zara-admin-page {
+    padding: 15px;
+  }
+
+  .zara-table th,
+  .zara-table td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .zara-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .zara-pagination-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.zara-admin-content-wrapper {
+  width: 100%;
+  padding: 20px;
+}
+
+.zara-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.zara-admin-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  color: #222;
+}
+
+.zara-admin-controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.zara-search-wrapper {
+  position: relative;
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.zara-search-input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.zara-rows-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.zara-rows-select {
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  font-size: 14px;
+}
+
+.zara-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.zara-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.zara-data-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e5e5e5;
+  color: #555;
+}
+
+.zara-data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e5e5;
+  vertical-align: middle;
+}
+
+.zara-reason-cell {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zara-status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.zara-status-badge.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.zara-status-badge.approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.zara-status-badge.rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.zara-actions-cell {
+  white-space: nowrap;
+}
+
+.zara-action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.zara-action-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 2px;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.zara-approve {
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.zara-reject {
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.zara-download {
+  color: #004085;
+  border: 1px solid #b8daff;
+}
+
+.zara-delete {
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.zara-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.zara-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.zara-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.zara-pagination-btn {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.zara-pagination-btn:hover:not(:disabled) {
+  background-color: #f5f5f5;
+}
+
+.zara-pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.zara-loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 12px;
+  color: #666;
+}
+
+.zara-loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: zara-spin 1s linear infinite;
+}
+
+@keyframes zara-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .zara-admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .zara-admin-controls {
+    width: 100%;
+  }
+
+  .zara-search-wrapper {
+    width: 100%;
+  }
+}

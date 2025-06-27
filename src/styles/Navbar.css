@@ -1,0 +1,345 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 100;
+  border-bottom: 1px solid #f0f0f0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.navbar__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar__logo {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  font-weight: 300;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo-image {
+  width: 45px;
+  height: 45px;
+}
+
+.navbar__logo-main {
+  color: #000;
+  font-weight: 400;
+}
+
+.navbar__logo-accent {
+  color: #999;
+  font-weight: 300;
+}
+
+.navbar__logo::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #000;
+  transition: width 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.navbar__logo:hover::after {
+  width: 100%;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.navbar__link {
+  background: none;
+  border: none;
+  position: relative;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.navbar__link.active .navbar__link-text {
+  color: #597C96;
+  font-weight: 500;
+  color: white;
+}
+
+.navbar__link.active .navbar__link-hover {
+  background: #597C96;
+  transform: translateY(0);
+}
+
+.navbar__link-text {
+  font-size: 0.7rem;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 2;
+  transition: color 0.4s ease;
+}
+
+.navbar__link-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+  z-index: 1;
+}
+
+.navbar__link:hover .navbar__link-hover {
+  transform: translateY(0);
+}
+
+.navbar__link:hover .navbar__link-text {
+  color: #fff;
+}
+
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.navbar__hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background: #000;
+  transition: all 0.4s ease;
+}
+
+.navbar__hamburger .bar.open:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.navbar__hamburger .bar.open:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__hamburger .bar.open:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+@media (max-width: 1024px) {
+  .navbar__container {
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar__links {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar__container {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar__logo {
+    font-size: 1.2rem;
+  }
+
+  .navbar__links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    transform: translateY(-150%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    height: calc(100vh - 60px);
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+  }
+
+  .navbar__links.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar__link {
+    width: 100%;
+    text-align: center;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__logo-image {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__container {
+    padding: 0.8rem;
+  }
+
+  .navbar__logo {
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+  }
+
+  .navbar__links {
+    top: 50px;
+    height: calc(100vh - 50px);
+  }
+
+  .navbar__link {
+    padding: 1rem 0;
+  }
+
+  .navbar__logo-image {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* User menu styles */
+.navbar__user-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-left: 15px;
+  gap: 10px;
+}
+
+.navbar__user-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.navbar__user-icon:hover {
+  transform: scale(1.1);
+}
+
+.navbar__user-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  min-width: 160px;
+  overflow: hidden;
+}
+
+.navbar__user-menu-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar__user-menu-item:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Account menu styles */
+.navbar__account-wrapper {
+  position: relative;
+}
+
+.navbar__account-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  min-width: 120px;
+}
+
+.navbar__account-menu-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+.navbar__account-menu-item:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .navbar__user-wrapper.mobile-view {
+    width: 100%;
+    margin: 15px 0 0 0;
+    padding: 12px 0;
+    border-top: 1px solid #f0f0f0;
+    gap: 12px;
+  }
+
+  .navbar__user-menu.mobile-position,
+  .navbar__account-menu.mobile-position {
+    position: relative;
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid #eee;
+    margin-top: 8px;
+  }
+
+  .navbar__user-icon {
+    margin-left: 0;
+  }
+}
+
+.navbar-loading {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+}

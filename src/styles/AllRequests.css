@@ -1,0 +1,18 @@
+.all-requests-container {
+  padding: 20px;
+}
+.request-section {
+  margin-bottom: 30px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead {
+  background-color: #f0f0f0;
+}
+td, th {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+}
+

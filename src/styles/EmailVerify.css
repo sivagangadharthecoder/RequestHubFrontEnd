@@ -1,0 +1,242 @@
+.verify-page {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.verify-header {
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.verify-header .logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #222;
+  cursor: pointer;
+}
+
+.verify-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.verify-card {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.verify-card-header {
+  padding: 24px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.verify-card-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #222;
+  font-weight: 600;
+}
+
+.verify-card-header p {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: #666;
+  word-break: break-word;
+}
+
+.verify-form {
+  padding: 24px;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 10px;
+}
+
+.otp-input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.otp-input:focus {
+  outline: none;
+  border-color: #999;
+}
+
+.verify-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.verify-button:hover {
+  background-color: #111;
+}
+
+.verify-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.resend-button {
+  background: none;
+  border: none;
+  color: #222;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-size: inherit;
+}
+
+.resend-button:hover {
+  color: #111;
+}
+
+@media (max-width: 480px) {
+  .verify-card {
+    margin: 0;
+  }
+
+  .verify-card-header,
+  .verify-form {
+    padding: 20px;
+  }
+
+  .otp-input {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .verify-footer {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 321px) {
+  .verify-card {
+    margin: 0;
+  }
+
+  .verify-card-header,
+  .verify-form {
+    padding: 10px;
+  }
+
+  .otp-input {
+    width: 25px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .verify-footer {
+    padding: 16px 20px;
+  }
+}
+
+
+.button-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-spinner.small {
+  transform: scale(0.6);
+}
+
+.spinner {
+  animation: rotate 2s linear infinite;
+  width: 20px;
+  height: 20px;
+}
+
+.spinner .path {
+  stroke: currentColor;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+/* Button state styles */
+.verify-button.loading {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.verify-button.success {
+  background-color: #4CAF50;
+}
+
+.verify-button.error {
+  background-color: #f44336;
+}
+
+.verify-button.success,
+.verify-button.error {
+  cursor: default;
+  animation: fadeInOut 1.5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+.resend-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
