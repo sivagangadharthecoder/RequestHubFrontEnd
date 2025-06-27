@@ -154,14 +154,14 @@ const AdminAdding = () => {
                                     backgroundColor: 'white'
                                 }}
                             >
-                                <option value="CSE">Computer Science and Engineering (CSE)</option>
-                                <option value="IT">Information Technology (IT)</option>
-                                <option value="ECE">Electronics and Communication Engineering (ECE)</option>
-                                <option value="EEE">Electrical and Electronics Engineering (EEE)</option>
-                                <option value="CIVIL">Civil Engineering (CIVIL)</option>
-                                <option value="MECH">Mechanical Engineering (MECH)</option>
-                                <option value="AIML">Artificial Intelligence and Machine Learning (AIML)</option>
-                                <option value="DS">Data Science (DS)</option>
+                                <option value="CSE">CSE</option>
+                                <option value="IT">IT</option>
+                                <option value="ECE">ECE</option>
+                                <option value="EEE">EEE</option>
+                                <option value="CIVIL">CIVIL</option>
+                                <option value="MECH">MECH</option>
+                                <option value="AIML">AIML</option>
+                                <option value="DS">DS</option>
                             </select>
                         </div>
 
