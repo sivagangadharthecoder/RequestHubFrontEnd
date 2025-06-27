@@ -238,8 +238,8 @@ const Login = () => {
       const isPasswordValid = validatePassword(password);
       const isConfirmPasswordValid = state === "Sign Up" ? validateConfirmPassword(confirmPassword) : true;
 
-      if (!isNameValid || !isEmailValid || !isRollNumberValid || 
-          !isPasswordValid || !isConfirmPasswordValid) {
+      if (!isNameValid || !isEmailValid || !isRollNumberValid ||
+        !isPasswordValid || !isConfirmPasswordValid) {
         addToast(
           { title: "Invalid Input", body: "Please check all fields" },
           "error"
