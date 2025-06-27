@@ -11,6 +11,7 @@ const AdminAdding = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [department, setDepartment] = useState('CSE'); // Default to CSE
     const [errors, setErrors] = useState({
         password: ''
     });
@@ -44,7 +45,8 @@ const AdminAdding = () => {
 
             const response = await axios.post(`${backendUrl}/api/admin-add/register2`, {
                 email,
-                password
+                password,
+                department
             });
 
             if (response.data.success) {
@@ -135,6 +137,42 @@ const AdminAdding = () => {
                                 transform: 'translateY(-50%)',
                                 fontSize: '16px',
                                 color: '#666'
+                            }}>🏛️</span>
+                            <select
+                                value={department}
+                                onChange={(e) => setDepartment(e.target.value)}
+                                style={{
+                                    width: '100%',
+                                    padding: '12px 12px 12px 40px',
+                                    border: '1px solid #ddd',
+                                    borderRadius: '4px',
+                                    fontSize: '14px',
+                                    color: '#222',
+                                    transition: 'border-color 0.2s',
+                                    boxSizing: 'border-box',
+                                    appearance: 'none',
+                                    backgroundColor: 'white'
+                                }}
+                            >
+                                <option value="CSE">Computer Science and Engineering (CSE)</option>
+                                <option value="IT">Information Technology (IT)</option>
+                                <option value="ECE">Electronics and Communication Engineering (ECE)</option>
+                                <option value="EEE">Electrical and Electronics Engineering (EEE)</option>
+                                <option value="CIVIL">Civil Engineering (CIVIL)</option>
+                                <option value="MECH">Mechanical Engineering (MECH)</option>
+                                <option value="AIML">Artificial Intelligence and Machine Learning (AIML)</option>
+                                <option value="DS">Data Science (DS)</option>
+                            </select>
+                        </div>
+
+                        <div style={{ position: 'relative', marginBottom: '16px' }}>
+                            <span style={{
+                                position: 'absolute',
+                                left: '12px',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                fontSize: '16px',
+                                color: '#666'
                             }}>📧</span>
                             <input
                                 onChange={e => setEmail(e.target.value)}
@@ -192,14 +230,6 @@ const AdminAdding = () => {
                                 {errors.password}
                             </p>
                         )}
-
-                        <div style={{
-                            display: 'flex',
-                            justifyContent: 'flex-end',
-                            marginBottom: '20px'
-                        }}>
-
-                        </div>
 
                         <button type="submit" style={{
                             width: '100%',
